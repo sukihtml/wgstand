@@ -745,6 +745,52 @@ svg {
   stroke: var(--lav);
 }
 
+.modal {
+  position: absolute;
+  inset: 0;
+  z-index: 40;
+  padding: 0 .6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(4, 4, 16, .72);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .3s var(--ease);
+}
+.modal.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+.modal-box {
+  width: 100%;
+  padding: .6rem .5rem .5rem;
+  border-radius: .38rem;
+  background: var(--s1);
+  box-shadow: 0 .14rem .4rem rgba(14, 14, 60, .5), inset 0 0 0 .01rem var(--line);
+  text-align: center;
+  transform: translateY(.2rem) scale(.96);
+  transition: transform .3s var(--ease);
+}
+.modal.show .modal-box {
+  transform: none;
+}
+.modal-box .sib {
+  margin: 0 auto .36rem;
+}
+.modal-t {
+  font: 500 .34rem/.5rem 'Outfit', sans-serif;
+}
+.modal-s {
+  margin-top: .2rem;
+  font: 400 .3rem/.44rem 'Outfit', sans-serif;
+  color: var(--mu);
+}
+.modal .cta {
+  width: 100%;
+  margin: .5rem 0 0;
+}
+
 @media (prefers-reduced-motion: reduce) {
   * {
     transition-duration: .01ms !important;
@@ -909,6 +955,14 @@ svg {
       <button class="mi" id="goTools" type="button"><svg><use href="#i-wrench"/></svg><span>Tools</span></button>
     </div>
   </aside>
+  <div class="modal show" id="modal">
+    <div class="modal-box">
+      <div class="sib"><svg><use href="#i-wrench"/></svg></div>
+      <div class="modal-t">web masih setengah jadi dan belum 100% jadi, mohon ditunggu.</div>
+      <div class="modal-s">Kalo kelamaan bisa beli di katalog suki, harga cuma 1k</div>
+      <button class="cta" id="closeModal" type="button">Oke</button>
+    </div>
+  </div>
 </div>
 
 <script>
@@ -979,6 +1033,9 @@ document.getElementById('openMenu').addEventListener('click', openMenu);
 document.getElementById('closeMenu').addEventListener('click', closeMenu);
 document.getElementById('overlay').addEventListener('click', closeMenu);
 document.getElementById('goTools').addEventListener('click', closeMenu);
+document.getElementById('closeModal').addEventListener('click', function () {
+  document.getElementById('modal').classList.remove('show');
+});
 document.getElementById('bell').addEventListener('click', function () { toast('Belum ada notifikasi'); });
 document.getElementById('go').addEventListener('click', submitOrder);
 document.getElementById('link').addEventListener('input', function () {
