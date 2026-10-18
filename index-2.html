@@ -1,0 +1,1014 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<title>Rasz Kmpg</title>
+<link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Outfit:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0b0b24;
+  --s1: #13132e;
+  --line: rgba(219, 223, 242, .09);
+  --vio: #9878c1;
+  --lav: #baa2da;
+  --cy: #54c2d9;
+  --tx: #eceefa;
+  --mu: #9a9cc4;
+  --ease: cubic-bezier(.4, 0, .2, 1);
+}
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-user-select: none;
+  user-select: none;
+}
+html {
+  font-size: min(100vw / 10.8, 480px / 10.8, 100vh / 21.94);
+  font-size: min(100vw / 10.8, 480px / 10.8, 100dvh / 21.94);
+  -webkit-text-size-adjust: 100%;
+  background: var(--bg);
+  overflow: hidden;
+  overscroll-behavior: none;
+  touch-action: manipulation;
+}
+body {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  font-family: 'Outfit', sans-serif;
+  color: var(--tx);
+  background: var(--bg);
+}
+button, a {
+  font: inherit;
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+}
+button {
+  background: none;
+  border: 0;
+}
+input {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: 0;
+  outline: 0;
+  -webkit-user-select: text;
+  user-select: text;
+}
+svg {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.75;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  flex: none;
+}
+.sprite {
+  position: absolute;
+  width: 0;
+  height: 0;
+}
+
+.app {
+  position: relative;
+  width: 10.8rem;
+  height: 100vh;
+  height: 100dvh;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: linear-gradient(var(--bg), #0e0e2c) no-repeat var(--bg);
+}
+
+.head {
+  height: 1.76rem;
+  padding: .26rem .32rem 0;
+  flex: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.hr {
+  display: flex;
+  gap: .4rem;
+}
+.hb {
+  width: .56rem;
+  height: .56rem;
+}
+.hb svg {
+  width: 100%;
+  height: 100%;
+  stroke: var(--tx);
+}
+
+.views {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+}
+.view {
+  position: absolute;
+  inset: 0;
+  overflow: hidden auto;
+  scrollbar-width: none;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(.2rem);
+  transition: opacity .3s var(--ease), transform .3s var(--ease), visibility 0s .3s;
+}
+.view::-webkit-scrollbar {
+  display: none;
+}
+.view.on {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+  transition-delay: 0s;
+}
+
+.banner {
+  height: 6.19rem;
+  margin: 0 .34rem;
+  padding-left: .53rem;
+  display: flex;
+  gap: .36rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding-left: .53rem;
+  scrollbar-width: none;
+}
+.banner::-webkit-scrollbar {
+  display: none;
+}
+.slide {
+  position: relative;
+  width: 8.75rem;
+  height: 100%;
+  flex: none;
+  overflow: hidden;
+  isolation: isolate;
+  border-radius: .43rem;
+  text-align: left;
+  scroll-snap-align: start;
+}
+.slide.one {
+  background: linear-gradient(135deg, #9878c1, #54607f);
+}
+.slide.one::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(rgba(11, 11, 36, 0) 45%, rgba(11, 11, 36, .78));
+}
+.slide.two {
+  background: linear-gradient(135deg, #2a2858, #3c7494);
+}
+.slide video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.cap {
+  position: absolute;
+  left: .39rem;
+  bottom: .38rem;
+  z-index: 1;
+}
+.cap-t {
+  font: 400 .32rem/.5rem 'Audiowide', sans-serif;
+  white-space: nowrap;
+}
+.cap-s {
+  margin-top: .04rem;
+  font: 400 .3rem/.4rem 'Outfit', sans-serif;
+  color: var(--tx);
+  white-space: nowrap;
+}
+
+.card {
+  position: relative;
+  height: 3.66rem;
+  margin: .56rem .34rem 0;
+  border-radius: .38rem;
+  background: linear-gradient(120deg, #4b3f88 0%, #6a579f 48%, #3d8cae 100%);
+  box-shadow: 0 .14rem .4rem rgba(14, 14, 60, .5), inset 0 0 0 .01rem rgba(255, 255, 255, .12);
+}
+.ibox {
+  position: absolute;
+  left: .45rem;
+  top: .45rem;
+  width: .97rem;
+  height: .97rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: .26rem;
+  background: rgba(255, 255, 255, .18);
+}
+.ibox svg {
+  width: .52rem;
+  height: .52rem;
+  stroke: #fff;
+}
+.card-title {
+  position: absolute;
+  left: 1.85rem;
+  top: .65rem;
+  font: 400 .46rem/.6rem 'Audiowide', sans-serif;
+  white-space: nowrap;
+}
+.tiles {
+  position: absolute;
+  left: .44rem;
+  top: 1.8rem;
+  display: flex;
+  gap: .35rem;
+}
+.tile {
+  width: 4.45rem;
+  height: 1.41rem;
+  padding-left: .3rem;
+  display: flex;
+  align-items: center;
+  gap: .2rem;
+  border-radius: .31rem;
+  background: rgba(255, 255, 255, .12);
+  box-shadow: inset 0 0 0 .01rem rgba(255, 255, 255, .14);
+}
+.tile svg {
+  width: .52rem;
+  height: .52rem;
+  stroke: #fff;
+}
+.lb {
+  font: 400 .29rem/.38rem 'Outfit', sans-serif;
+  color: rgba(236, 238, 250, .8);
+  white-space: nowrap;
+}
+.vl {
+  font: 400 .32rem/.5rem 'Audiowide', sans-serif;
+  white-space: nowrap;
+}
+
+.sect {
+  height: .6rem;
+  margin: .61rem .34rem 0 .37rem;
+  font: 400 .35rem/.6rem 'Audiowide', sans-serif;
+  white-space: nowrap;
+}
+.stats {
+  margin: .18rem .34rem 0;
+  display: flex;
+  gap: .37rem;
+}
+.stat {
+  height: 1.73rem;
+  padding-left: .38rem;
+  display: flex;
+  align-items: center;
+  border-radius: .34rem;
+  background: var(--s1);
+  box-shadow: inset 0 0 0 .01rem var(--line);
+}
+.stats .stat {
+  flex: 1 1 0;
+  min-width: 0;
+}
+.stat.wide {
+  height: 1.74rem;
+  margin: .38rem .34rem 0;
+}
+.sib {
+  width: .96rem;
+  height: .96rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  border-radius: .24rem;
+  background: rgba(152, 120, 193, .16);
+}
+.sib.cy {
+  background: rgba(84, 194, 217, .13);
+}
+.sib svg {
+  width: .52rem;
+  height: .52rem;
+  stroke: var(--lav);
+}
+.sib.cy svg {
+  stroke: var(--cy);
+}
+.stat .txt {
+  margin-left: .38rem;
+}
+.stat .lb {
+  color: var(--mu);
+}
+
+.cta {
+  width: calc(100% - .68rem);
+  height: .99rem;
+  margin: .59rem .34rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .26rem;
+  border-radius: .27rem;
+  background: linear-gradient(100deg, #8a6cc8, #4aa9cf);
+  box-shadow: 0 .1rem .3rem rgba(40, 40, 120, .4);
+  font: 400 .3rem/1 'Audiowide', sans-serif;
+  color: #fff;
+  white-space: nowrap;
+  transition: transform .15s var(--ease), filter .2s;
+}
+.cta:active {
+  transform: scale(.985);
+  filter: brightness(.94);
+}
+.cta svg {
+  width: .42rem;
+  height: .42rem;
+  stroke: #fff;
+  stroke-width: 1.9;
+}
+
+.pad {
+  padding: 0 .34rem;
+}
+.h1 {
+  padding-left: .03rem;
+  font: 400 .42rem/.6rem 'Audiowide', sans-serif;
+}
+.sub {
+  margin-top: .06rem;
+  padding-left: .03rem;
+  font: 400 .3rem/.42rem 'Outfit', sans-serif;
+  color: var(--mu);
+}
+.seg {
+  position: relative;
+  height: 1.1rem;
+  margin-top: .5rem;
+  padding: .08rem;
+  display: flex;
+  border-radius: .3rem;
+  background: var(--s1);
+  box-shadow: inset 0 0 0 .01rem var(--line);
+}
+.seg-t {
+  position: absolute;
+  top: .08rem;
+  bottom: .08rem;
+  left: .08rem;
+  width: calc(50% - .08rem);
+  border-radius: .23rem;
+  background: linear-gradient(100deg, #7d62bd, #4a9fc6);
+  transform: translateX(calc(var(--t, 0) * 100%));
+  transition: transform .34s var(--ease);
+}
+.seg button {
+  position: relative;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .14rem;
+  font: 500 .32rem/1 'Outfit', sans-serif;
+  color: var(--mu);
+  transition: color .25s;
+}
+.seg button.on {
+  color: #fff;
+}
+.seg svg {
+  width: .4rem;
+  height: .4rem;
+}
+.amt {
+  margin-top: .4rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: .3rem;
+}
+.opt {
+  position: relative;
+  height: 1.7rem;
+  padding-left: .4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  border-radius: .34rem;
+  background: var(--s1);
+  box-shadow: inset 0 0 0 .02rem var(--line);
+  transition: box-shadow .25s, background .25s, transform .15s var(--ease);
+}
+.opt:active {
+  transform: scale(.98);
+}
+.opt b {
+  font: 400 .54rem/.66rem 'Audiowide', sans-serif;
+}
+.opt small {
+  font: 400 .28rem/.38rem 'Outfit', sans-serif;
+  color: var(--mu);
+}
+.opt em {
+  position: absolute;
+  top: .24rem;
+  right: .26rem;
+  padding: 0 .14rem;
+  border-radius: .2rem;
+  background: rgba(84, 194, 217, .14);
+  font: 500 .22rem/.32rem 'Outfit', sans-serif;
+  font-style: normal;
+  color: var(--cy);
+}
+.opt i {
+  position: absolute;
+  right: .26rem;
+  bottom: .26rem;
+  width: .4rem;
+  height: .4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--vio);
+  opacity: 0;
+  transform: scale(.6);
+  transition: opacity .25s, transform .3s var(--ease);
+}
+.opt i svg {
+  width: .24rem;
+  height: .24rem;
+  stroke: #fff;
+  stroke-width: 3;
+}
+.opt.on {
+  background: rgba(152, 120, 193, .14);
+  box-shadow: inset 0 0 0 .02rem var(--vio);
+}
+.opt.on i {
+  opacity: 1;
+  transform: none;
+}
+.fl {
+  margin: .45rem 0 .14rem .06rem;
+  font: 500 .28rem/.38rem 'Outfit', sans-serif;
+  color: var(--mu);
+}
+.fld {
+  height: 1.1rem;
+  padding: 0 .3rem;
+  display: flex;
+  align-items: center;
+  gap: .2rem;
+  border-radius: .3rem;
+  background: var(--s1);
+  box-shadow: inset 0 0 0 .02rem var(--line);
+  transition: box-shadow .25s;
+}
+.fld:focus-within {
+  box-shadow: inset 0 0 0 .02rem var(--vio);
+}
+.fld.bad {
+  box-shadow: inset 0 0 0 .02rem #d9566f;
+}
+.fld svg {
+  width: .42rem;
+  height: .42rem;
+  stroke: var(--mu);
+}
+.fld input {
+  flex: 1;
+  min-width: 0;
+  font: 400 .3rem/1 'Outfit', sans-serif;
+}
+.fld input::placeholder {
+  color: #666890;
+}
+.hint {
+  height: .38rem;
+  margin: .1rem 0 0 .06rem;
+  font: 400 .26rem/.38rem 'Outfit', sans-serif;
+  color: var(--mu);
+}
+.fld.bad + .hint {
+  color: #e0728a;
+}
+.pad .cta {
+  width: 100%;
+  margin: .3rem 0 0;
+}
+
+.avatar, .av {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #9878c1, #54c2d9);
+  font-family: 'Audiowide', sans-serif;
+  color: #fff;
+}
+.avatar {
+  width: 2.1rem;
+  height: 2.1rem;
+  margin: .2rem auto 0;
+  font-size: .8rem;
+}
+.pname {
+  margin-top: .3rem;
+  text-align: center;
+  font: 400 .46rem/.6rem 'Audiowide', sans-serif;
+}
+.chip {
+  width: fit-content;
+  margin: .14rem auto 0;
+  padding: .04rem .3rem;
+  border-radius: .3rem;
+  background: rgba(152, 120, 193, .16);
+  font: 500 .28rem/.4rem 'Outfit', sans-serif;
+  color: var(--lav);
+}
+.list {
+  margin: .6rem .34rem 0;
+  overflow: hidden;
+  border-radius: .34rem;
+  background: var(--s1);
+  box-shadow: inset 0 0 0 .01rem var(--line);
+}
+.li {
+  height: 1.3rem;
+  padding: 0 .4rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: .01rem solid var(--line);
+}
+.li:last-child {
+  border-bottom: 0;
+}
+.li span {
+  font: 400 .3rem/.4rem 'Outfit', sans-serif;
+  color: var(--mu);
+}
+.li b {
+  font: 400 .3rem/.4rem 'Audiowide', sans-serif;
+}
+
+.nav {
+  position: relative;
+  height: 1.18rem;
+  flex: none;
+  display: flex;
+  border-top: .01rem solid var(--line);
+  background: #0e0e2a;
+}
+.ind {
+  position: absolute;
+  top: .14rem;
+  left: 0;
+  width: 33.3334%;
+  height: .9rem;
+  display: flex;
+  justify-content: center;
+  pointer-events: none;
+  transform: translateX(calc(var(--i, 0) * 100%));
+  transition: transform .38s var(--ease);
+}
+.ind::before {
+  content: '';
+  width: 1.9rem;
+  height: 100%;
+  border-radius: .3rem;
+  background: rgba(152, 120, 193, .15);
+}
+.nav button {
+  position: relative;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.nav svg {
+  width: .5rem;
+  height: .5rem;
+  stroke: var(--mu);
+  transition: stroke .25s, transform .3s var(--ease);
+}
+.nav span {
+  font: 500 .26rem/.34rem 'Outfit', sans-serif;
+  color: var(--mu);
+  transition: color .25s;
+}
+.nav button.on svg {
+  stroke: var(--lav);
+  transform: translateY(-.02rem);
+}
+.nav button.on span {
+  color: var(--tx);
+}
+.nav button:active svg {
+  transform: scale(.9);
+}
+
+.toast {
+  position: absolute;
+  left: 50%;
+  bottom: 1.6rem;
+  z-index: 30;
+  padding: .12rem .4rem;
+  border-radius: .4rem;
+  background: #23234a;
+  box-shadow: 0 .1rem .3rem rgba(0, 0, 0, .35), inset 0 0 0 .01rem var(--line);
+  font: 500 .28rem/.4rem 'Outfit', sans-serif;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, .2rem);
+  transition: opacity .25s var(--ease), transform .25s var(--ease);
+}
+.toast.show {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 20;
+  background: rgba(4, 4, 16, .55);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .3s var(--ease);
+}
+.side {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 21;
+  width: 8.7rem;
+  padding: .47rem;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(#0c0c26, #0e0b24);
+  border-right: .01rem solid var(--line);
+  transform: translateX(-101%);
+  transition: transform .34s var(--ease);
+}
+.open .overlay {
+  opacity: 1;
+  pointer-events: auto;
+}
+.open .side {
+  transform: none;
+}
+.sh {
+  height: .96rem;
+  display: flex;
+  align-items: center;
+  gap: .3rem;
+}
+.av {
+  width: .96rem;
+  height: .96rem;
+  font-size: .4rem;
+}
+.who {
+  flex: 1;
+  min-width: 0;
+}
+.who b {
+  display: block;
+  font: 400 .36rem/.5rem 'Audiowide', sans-serif;
+}
+.who span {
+  display: block;
+  font: 400 .28rem/.38rem 'Outfit', sans-serif;
+  color: var(--mu);
+}
+.x {
+  width: .7rem;
+  height: .7rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, .06);
+}
+.x svg {
+  width: .36rem;
+  height: .36rem;
+  stroke: var(--tx);
+}
+.menu-list {
+  margin-top: .55rem;
+  display: flex;
+  flex-direction: column;
+  gap: .2rem;
+}
+.mi {
+  height: 1.3rem;
+  padding: 0 .36rem;
+  display: flex;
+  align-items: center;
+  gap: .34rem;
+  border-radius: .32rem;
+  font: 400 .38rem/1 'Outfit', sans-serif;
+  color: #c4c6e2;
+  text-align: left;
+  transition: background .25s, color .25s;
+}
+.mi svg {
+  width: .5rem;
+  height: .5rem;
+}
+.mi.on {
+  background: rgba(152, 120, 193, .15);
+  color: #fff;
+}
+.mi.on svg {
+  stroke: var(--lav);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition-duration: .01ms !important;
+  }
+}
+</style>
+</head>
+<body>
+<svg class="sprite" aria-hidden="true">
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></symbol>
+  <symbol id="i-bell" viewBox="0 0 24 24"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></symbol>
+  <symbol id="i-profile" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="10" r="3"/><path d="M7 20.662V19a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v1.662"/></symbol>
+  <symbol id="i-home" viewBox="0 0 24 24"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"/><path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></symbol>
+  <symbol id="i-wa" viewBox="0 0 24 24"><path d="M3 21l1.65-3.8a9 9 0 1 1 3.4 2.9l-5.05.9"/><path d="M9 10a.5.5 0 0 0 1 0v-1a.5.5 0 0 0-1 0v1a5 5 0 0 0 5 5h1a.5.5 0 0 0 0-1h-1a.5.5 0 0 0 0 1"/></symbol>
+  <symbol id="i-user" viewBox="0 0 24 24"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></symbol>
+  <symbol id="i-users" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
+  <symbol id="i-smile" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><path d="M9 9h.01M15 9h.01"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></symbol>
+  <symbol id="i-cal" viewBox="0 0 24 24"><path d="M8 2v4M16 2v4"/><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M3 10h18"/></symbol>
+  <symbol id="i-bot" viewBox="0 0 24 24"><path d="M12 8V4H8"/><rect x="4" y="8" width="16" height="12" rx="2"/><path d="M2 14h2M20 14h2M15 13v2M9 13v2"/></symbol>
+  <symbol id="i-link" viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></symbol>
+  <symbol id="i-wrench" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></symbol>
+</svg>
+<div class="app" id="app">
+  <div class="head">
+    <button class="hb" id="openMenu" type="button" aria-label="Menu"><svg><use href="#i-menu"/></svg></button>
+    <div class="hr">
+      <button class="hb" id="bell" type="button" aria-label="Notifikasi"><svg><use href="#i-bell"/></svg></button>
+      <button class="hb" data-go="profil" type="button" aria-label="Akun"><svg><use href="#i-profile"/></svg></button>
+    </div>
+  </div>
+
+  <div class="views">
+    <section class="view on" id="v-home">
+      <div class="banner">
+        <div class="slide one">
+          <video src="home_video.mp4" autoplay muted loop playsinline></video>
+          <div class="cap">
+            <div class="cap-t">SUKi RASZ</div>
+            <div class="cap-s">Free Access 0 Coin</div>
+          </div>
+        </div>
+        <button class="slide two" data-go="wa" type="button">
+          <video src="home2_video.mp4" autoplay muted loop playsinline></video>
+          <div class="cap">
+            <div class="cap-t">BOT SALURAN</div>
+            <div class="cap-s">Follower dan reaction hingga 600</div>
+          </div>
+        </button>
+      </div>
+
+      <div class="card">
+        <div class="ibox"><svg><use href="#i-bot"/></svg></div>
+        <div class="card-title">SUKi RASZ KMPG</div>
+        <div class="tiles">
+          <div class="tile">
+            <svg><use href="#i-users"/></svg>
+            <div><div class="lb">Follower Saluran</div><div class="vl">RP 0</div></div>
+          </div>
+          <div class="tile">
+            <svg><use href="#i-smile"/></svg>
+            <div><div class="lb">Reaction Saluran</div><div class="vl">RP 0</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sect">ACCOUNT STATISTiK</div>
+      <div class="stats">
+        <div class="stat">
+          <div class="sib"><svg><use href="#i-user"/></svg></div>
+          <div class="txt"><div class="lb">Username</div><div class="vl">WG</div></div>
+        </div>
+        <div class="stat">
+          <div class="sib cy"><svg><use href="#i-shield"/></svg></div>
+          <div class="txt"><div class="lb">Role</div><div class="vl">SUKi</div></div>
+        </div>
+      </div>
+      <div class="stat wide">
+        <div class="sib"><svg><use href="#i-cal"/></svg></div>
+        <div class="txt"><div class="lb">Expiration Date</div><div class="vl">5-2-2027</div></div>
+      </div>
+
+      <button class="cta" data-go="wa" type="button">
+        <svg><use href="#i-wa"/></svg>
+        <span>MANAGE BOT WHATSAPP</span>
+      </button>
+    </section>
+
+    <section class="view" id="v-wa">
+      <div class="pad">
+        <div class="h1">MANAGE BOT</div>
+        <div class="sub">Pilih layanan dan jumlah untuk saluran WhatsApp</div>
+
+        <div class="seg" id="seg">
+          <div class="seg-t"></div>
+          <button class="on" data-t="follower" type="button"><svg><use href="#i-users"/></svg>Follower</button>
+          <button data-t="reaction" type="button"><svg><use href="#i-smile"/></svg>Reaction</button>
+        </div>
+
+        <div class="amt">
+          <button class="opt on" data-n="20" type="button"><b>20</b><small>Follower</small><i><svg><use href="#i-check"/></svg></i></button>
+          <button class="opt" data-n="50" type="button"><b>50</b><small>Follower</small><i><svg><use href="#i-check"/></svg></i></button>
+          <button class="opt" data-n="300" type="button"><b>300</b><small>Follower</small><i><svg><use href="#i-check"/></svg></i></button>
+          <button class="opt" data-n="600" type="button"><b>600</b><small>Follower</small><em>Maks</em><i><svg><use href="#i-check"/></svg></i></button>
+        </div>
+
+        <div class="fl">Link saluran</div>
+        <div class="fld" id="fld">
+          <svg><use href="#i-link"/></svg>
+          <input id="link" type="url" inputmode="url" autocomplete="off" placeholder="https://whatsapp.com/channel/...">
+        </div>
+        <div class="hint" id="hint">Tempel link saluran WhatsApp</div>
+
+        <button class="cta" id="go" type="button"><span id="goTxt">Lanjutkan</span></button>
+      </div>
+    </section>
+
+    <section class="view" id="v-profil">
+      <div class="avatar">W</div>
+      <div class="pname">WG</div>
+      <div class="chip">SUKi</div>
+      <div class="list">
+        <div class="li"><span>Username</span><b>WG</b></div>
+        <div class="li"><span>Role</span><b>SUKi</b></div>
+        <div class="li"><span>Expiration Date</span><b>5-2-2027</b></div>
+        <div class="li"><span>Follower Saluran</span><b>RP 0</b></div>
+        <div class="li"><span>Reaction Saluran</span><b>RP 0</b></div>
+      </div>
+    </section>
+  </div>
+
+  <nav class="nav" id="nav">
+    <i class="ind"></i>
+    <button class="on" data-v="home" type="button" aria-label="Home">
+      <svg><use href="#i-home"/></svg>
+      <span>Home</span>
+    </button>
+    <button data-v="wa" type="button" aria-label="Whatsapp">
+      <svg><use href="#i-wa"/></svg>
+      <span>Whatsapp</span>
+    </button>
+    <button data-v="profil" type="button" aria-label="Profil">
+      <svg><use href="#i-user"/></svg>
+      <span>Profil</span>
+    </button>
+  </nav>
+
+  <div class="toast" id="toast"></div>
+  <div class="overlay" id="overlay"></div>
+  <aside class="side">
+    <div class="sh">
+      <div class="av">W</div>
+      <div class="who"><b>WG</b><span>SUKi</span></div>
+      <button class="x" id="closeMenu" type="button" aria-label="Tutup"><svg><use href="#i-x"/></svg></button>
+    </div>
+    <div class="menu-list">
+      <button class="mi on" data-v="home" type="button"><svg><use href="#i-home"/></svg><span>Beranda</span></button>
+      <button class="mi" data-v="wa" type="button"><svg><use href="#i-wa"/></svg><span>WhatsApp</span></button>
+      <button class="mi" data-v="profil" type="button"><svg><use href="#i-user"/></svg><span>Profil</span></button>
+      <button class="mi" id="goTools" type="button"><svg><use href="#i-wrench"/></svg><span>Tools</span></button>
+    </div>
+  </aside>
+</div>
+
+<script>
+var app = document.getElementById('app');
+var nav = document.getElementById('nav');
+var order = ['home', 'wa', 'profil'];
+var type = 'follower';
+var amount = 20;
+var timer;
+
+function play(v) {
+  var p = v.play();
+  if (p && p.catch) p.catch(function () {});
+}
+
+function openMenu() {
+  app.classList.add('open');
+}
+
+function closeMenu() {
+  app.classList.remove('open');
+}
+
+function show(name) {
+  document.querySelectorAll('.view').forEach(function (v) {
+    v.classList.toggle('on', v.id === 'v-' + name);
+  });
+  document.querySelectorAll('[data-v]').forEach(function (b) {
+    b.classList.toggle('on', b.dataset.v === name);
+  });
+  nav.style.setProperty('--i', order.indexOf(name));
+  closeMenu();
+}
+
+function toast(msg) {
+  var t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(timer);
+  timer = setTimeout(function () { t.classList.remove('show'); }, 2000);
+}
+
+function label() {
+  return type === 'follower' ? 'Follower' : 'Reaction';
+}
+
+function refresh() {
+  document.getElementById('seg').style.setProperty('--t', type === 'follower' ? 0 : 1);
+  document.querySelectorAll('.seg button').forEach(function (b) {
+    b.classList.toggle('on', b.dataset.t === type);
+  });
+  document.querySelectorAll('.opt').forEach(function (o) {
+    o.classList.toggle('on', +o.dataset.n === amount);
+    o.querySelector('small').textContent = label();
+  });
+  document.getElementById('goTxt').textContent = 'Lanjutkan · ' + label() + ' ' + amount;
+}
+
+function submitOrder() {
+  var link = document.getElementById('link').value.trim();
+  var ok = /^https?:\/\/(www\.)?whatsapp\.com\/channel\/[\w-]+/i.test(link);
+  document.getElementById('fld').classList.toggle('bad', !ok);
+  document.getElementById('hint').textContent = ok ? 'Tempel link saluran WhatsApp' : 'Link saluran tidak valid';
+  if (ok) toast(amount + ' ' + label() + ' dipilih');
+}
+
+document.getElementById('openMenu').addEventListener('click', openMenu);
+document.getElementById('closeMenu').addEventListener('click', closeMenu);
+document.getElementById('overlay').addEventListener('click', closeMenu);
+document.getElementById('goTools').addEventListener('click', closeMenu);
+document.getElementById('bell').addEventListener('click', function () { toast('Belum ada notifikasi'); });
+document.getElementById('go').addEventListener('click', submitOrder);
+document.getElementById('link').addEventListener('input', function () {
+  document.getElementById('fld').classList.remove('bad');
+  document.getElementById('hint').textContent = 'Tempel link saluran WhatsApp';
+});
+
+document.querySelectorAll('[data-v], [data-go]').forEach(function (el) {
+  el.addEventListener('click', function () { show(el.dataset.v || el.dataset.go); });
+});
+document.querySelectorAll('.seg button').forEach(function (b) {
+  b.addEventListener('click', function () { type = b.dataset.t; refresh(); });
+});
+document.querySelectorAll('.opt').forEach(function (o) {
+  o.addEventListener('click', function () { amount = +o.dataset.n; refresh(); });
+});
+
+refresh();
+
+document.addEventListener('gesturestart', function (e) { e.preventDefault(); });
+document.addEventListener('gesturechange', function (e) { e.preventDefault(); });
+document.addEventListener('touchmove', function (e) {
+  if (e.touches.length > 1 || e.scale && e.scale !== 1) e.preventDefault();
+}, { passive: false });
+document.addEventListener('wheel', function (e) {
+  if (e.ctrlKey) e.preventDefault();
+}, { passive: false });
+document.addEventListener('keydown', function (e) {
+  if ((e.ctrlKey || e.metaKey) && ['+', '-', '=', '0'].indexOf(e.key) > -1) e.preventDefault();
+});
+</script>
+</body>
+</html>
